@@ -13,16 +13,6 @@ def get_posts():
 
 
 def database_add_post(title, content):
-    # try:
-    #     self.__cur.execute(
-    #         "INSERT INTO posts VALUES (NULL, ?, ?, ?)",
-    #         (title, content, pub_date)
-    #     )
-    #     self.__db.commit()
-    # except sqlite3.Error as e:
-    #     print(f"Error adding post to database: {e}")
-    #     return False
-    # return True
     pub_date = math.floor(time.time())
     post = Post()
     post.title = title

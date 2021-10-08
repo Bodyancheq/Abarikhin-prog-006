@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, flash, abort
 from flask_login import login_required, current_user
-from sqlalchemy import text
 
-from flask_006 import db
 from flask_006.services import get_posts, get_post_content, database_add_post
 
 main = Blueprint('main', __name__)
