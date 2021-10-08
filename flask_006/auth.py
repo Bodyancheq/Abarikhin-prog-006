@@ -45,6 +45,10 @@ def signup_post():
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
 
+    if len(password) <= 5 or '0123456789' not in password:
+        flash('Password length should be more than 5 and it must contain at least 1 number')
+        return redirect(url_for('auth.signup'))
+
     new_user = User(email=email, name=name,
                     password=generate_password_hash(password, method='sha256'))
 
