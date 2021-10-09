@@ -51,6 +51,10 @@ def signup_post():
         flash('Password length should be more than 5 and it must contain at least 1 number')
         return redirect(url_for('auth.signup'))
 
+    if not re.findall(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
+        flash('Invalid email')
+        return redirect(url_for('auth.signup'))
+
     new_user = User(email=email, name=name,
                     password=generate_password_hash(password, method='sha256'))
 
