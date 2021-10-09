@@ -1,3 +1,5 @@
+import re
+
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -45,7 +47,7 @@ def signup_post():
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
 
-    if len(password) <= 5 or '0123456789' not in password:
+    if len(password) <= 5 or not re.search(r'[0-9]', password):
         flash('Password length should be more than 5 and it must contain at least 1 number')
         return redirect(url_for('auth.signup'))
 
